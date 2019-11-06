@@ -3,7 +3,8 @@ const db = require('../data/db-config')
 module.exports = {
   // getAll,
   // getById,
-  getPosts
+  getPosts,
+  update,
 };
 
 function getPosts(userId) {
@@ -12,3 +13,12 @@ function getPosts(userId) {
     .select('p.id', 'u.username', 'p.contents')
     .where({ 'u.id': userId });
 }
+
+// function update(changes, id) {
+//   return db('users')
+//     .where({ id })
+//     .update(changes)
+//     .then(count => {
+//       return getById(id)
+//     })
+// }
