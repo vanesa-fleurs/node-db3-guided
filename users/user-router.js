@@ -1,8 +1,16 @@
 const express = require('express');
-
+const Users = require('./user-model');
 const db = require('../data/db-config.js');
 
 const router = express.Router();
+
+router.get('/:id/posts', async (req, res) => {
+  try {
+    const posts = await Users.getPosts(req.params.id)
+  } catch (error) {
+    res.status(500).json(error.message);
+  }
+})
 
 router.get('/', (req, res) => {
   db('users')
