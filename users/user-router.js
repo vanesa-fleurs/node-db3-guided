@@ -7,6 +7,7 @@ const router = express.Router();
 router.get('/:id/posts', async (req, res) => {
   try {
     const posts = await Users.getPosts(req.params.id)
+    res.json(posts);
   } catch (error) {
     res.status(500).json(error.message);
   }
